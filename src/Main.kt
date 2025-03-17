@@ -32,3 +32,49 @@ fun revertValues(list: List<Int>):List<Int> {
     list.forEach { listResult.addFirst(it)}
     return listResult
 }
+
+fun catAndMouse(x: Int, y: Int, z: Int): String {
+    var distanceX = z - x
+    var distanceY = z - y
+
+    if (distanceX > 0) distanceX *= -1
+    if (distanceY > 0) distanceY *= -1
+    return if (distanceX >= distanceY)
+        if (distanceX > distanceY )
+            "Cat A"
+        else
+            "Mouse C"
+    else
+        "Cat B"
+}
+
+fun gradingStudents(grades: Array<Int>): Array<Int> {
+    val listResult: MutableList<Int> = mutableListOf()
+    grades.forEach{
+        listResult.add( if((it+2)%5 in 0..2 && it>38) it+2-((it+2)%5) else it )
+    }
+    return listResult.toTypedArray()
+}
+
+fun birthdayCakeCandles(candles: Array<Int>): Int {
+    val maxCandle = candles.max()
+    val countCandles = candles.count { c -> c == maxCandle }
+    return countCandles
+}
+fun staircase(n: Int){
+    (n downTo 1).forEach{ i ->
+        (1..n).forEach{ j ->
+            if( j < i)
+                print(" ")
+
+            else
+                print("#")
+        }
+        println()
+    }
+}
+
+fun bonAppetit(bill: Array<Int>, k: Int, b: Int){
+    val totalSplit = (bill.sum() - bill[k])/2
+    println(if(totalSplit == b) "Bon Appetit" else "${b - totalSplit}")
+}
