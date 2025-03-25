@@ -1,12 +1,16 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    showMathTable(5)
+    /*showMathTable(5)
     println("Max Value ${maxValue(arrayListOf(1,2,3,4,10,-1))}")
     println("Min Value ${minValue(arrayListOf(1,2,3,4,10,-1))}")
 
     println(listOf( 1, 2, 3, 4, 5, 6, 7, 8, 9, 0))
     println(revertValues(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)))
+*/
+
+    val result = compareTriplets(arrayOf(5, 6 ,7), arrayOf(3 ,6 ,10))
+    println(result.joinToString(" "))
 }
 
 
@@ -77,4 +81,14 @@ fun staircase(n: Int){
 fun bonAppetit(bill: Array<Int>, k: Int, b: Int){
     val totalSplit = (bill.sum() - bill[k])/2
     println(if(totalSplit == b) "Bon Appetit" else "${b - totalSplit}")
+}
+
+fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
+    val scores = arrayOf(0,0)
+    (0 until a.size).forEach{
+        when {
+            a[it] > b[it] -> scores[0]++
+        a[it] < b[it] -> scores[1]++}
+    }
+    return scores
 }
