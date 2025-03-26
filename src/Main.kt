@@ -1,3 +1,6 @@
+import java.math.BigDecimal
+import kotlin.math.abs
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
@@ -7,10 +10,12 @@ fun main() {
 
     println(listOf( 1, 2, 3, 4, 5, 6, 7, 8, 9, 0))
     println(revertValues(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)))
-*/
+
 
     val result = compareTriplets(arrayOf(5, 6 ,7), arrayOf(3 ,6 ,10))
     println(result.joinToString(" "))
+*/
+    plusMinus()
 }
 
 
@@ -91,4 +96,32 @@ fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
         a[it] < b[it] -> scores[1]++}
     }
     return scores
+}
+
+fun simpleArraySum(ar: Array<Int>): Int {
+    //return ar.sum()
+    var sum = 0
+    ar.forEach { sum += it }
+    return sum
+}
+
+fun aVeryBigSum(ar: Array<Long>): Long {
+    return ar.sum()
+}
+
+fun diagonalDifference(arr: Array<Array<Int>>): Int {
+    var diagonalDifference = 0
+    (0..< arr.size).forEach { i -> diagonalDifference += arr[i][i] }
+    (0..< arr.size).forEach { i -> diagonalDifference -= arr[arr.size-1-i][i] }
+    return abs(diagonalDifference)
+}
+
+fun plusMinus(arr: Array<Int>): Unit {
+    var positives = 0.0
+    var zeros = 0.0
+    var negatives = 0.0
+    arr.forEach{ if (it > 0) positives++ else if (it==0) zeros++ else negatives++}
+    println("%.6f".format(positives/arr.size.toDouble()))
+    println("%.6f".format(negatives/arr.size.toDouble()))
+    println("%.6f".format(zeros/arr.size.toDouble()))
 }
